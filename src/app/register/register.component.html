@@ -1,1 +1,29 @@
-<p>register works!</p>
+
+<div class="columns container is-fluid  is-centered">
+
+    <div class="column   is-12-mobile is-4-desktop  is-4-tablet">
+       <div class="signupcontainer has-background-primary"> 
+         <label> Firstname </label>
+         <input type="text" class="input"   [(ngModel)]="Firstname"      required/>
+
+         <label> Lastname </label>
+         <input type="text" class="input"  [(ngModel)]="Lastname" required/>
+
+         <label> Email </label>
+         <input type="email" class="input" [(ngModel)]="Email" required />
+
+         <label>User Name </label>
+         <input type="text" class="input" [(ngModel)]="Username" required />
+
+         <label>Password </label>
+         <input type="password" class="input"  [(ngModel)]= "Password" required />
+
+         <button type="submit" id="signingup" class=" button is-rounded has-background-primary-dark" (click)="SignupUser()"> Sign up </button>
+
+
+
+    </div>
+    </div>
+</div>
+
+
