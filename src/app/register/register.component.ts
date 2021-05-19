@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import {UserServiceService}    from   "../user-service.service"
+import {UserModel}    from  "../models/user-model";
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -8,12 +9,12 @@ import { Component, OnInit } from '@angular/core';
 export class RegisterComponent implements OnInit {
 
   
-  Firstname: String;
-  Lastname: String;
-  Email: String;
-  Username: String;
-  Password: String;
-  constructor() {
+  Firstname: string;
+  Lastname: string;
+  Email: string;
+  Username: string;
+  Password: string;
+  constructor(private userservice: UserServiceService) {
    
   }
 
@@ -31,7 +32,7 @@ export class RegisterComponent implements OnInit {
     console.log("hello email " + this.Email);
     console.log("hello username " + this.Username);
     console.log("hello password " + this.Password);
-
+    this.userservice.CreateUser(new UserModel(this.Firstname, this.Lastname, this.Username, this.Password, this.Email));
   
   }
 
