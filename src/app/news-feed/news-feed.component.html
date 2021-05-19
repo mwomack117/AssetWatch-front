@@ -1,0 +1,21 @@
+<section class="news-container">
+
+    <ng-container *ngFor="let item of newsResults">
+        <div class="news-item">
+            <a href="{{item.news_url}}" target="_blank"><img [src]="item.image_url" alt="" class="image-preview"></a>
+            <div class="titlesearch">
+                <a href="{{item.news_url}}" target="_blank">{{item.title}}</a>
+            </div>
+            <div class="textsearch">{{item.text}}</div>
+            <div class="bottom">
+                <ng-container *ngFor="let ticker of item['tickers']">
+                    <span class="bottomticker">
+                        {{ticker}}
+                    </span>
+                </ng-container>
+                <span class="bottomsearchtext">{{item.source_name}} | {{item.date}} |<span class="sentiment"
+                        [style.color]="item.sentiment == 'Positive' ? '#00B259' : item.sentiment == 'Negative' ? 'red' : '#33475b'">{{item.sentiment}}</span></span>
+            </div>
+        </div>
+    </ng-container>
+</section>

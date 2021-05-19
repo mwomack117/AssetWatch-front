@@ -1,0 +1,31 @@
+<h2 class="has-text-centered is-size-4 mb-2">Portfolio/Watchlist</h2>
+<table class="table is-bordered is-striped is-fullwidth">
+    <thead>
+        <tr class="is-selected has-text-centered">
+            <th>Ticker</th>
+            <th>Name</th>
+            <th>Exchange</th>
+            <th>Open</th>
+            <th>Close</th>
+            <th>Shares</th>
+            <th>Update</th>
+            <th>Remove</th>
+        </tr>
+    </thead>
+    <ng-container *ngIf="portfolioItems">
+        <tr *ngFor="let item of portfolioItems">
+            <td>{{item.symbol}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.exchange}}</td>
+            <td>{{item.open | currency}}</td>
+            <td>{{item.close | currency}}</td>
+            <td>Shares</td>
+            <td class="update-input-td">
+                <div class="is-flex"><input type=" number" class="input is-small is-primary update-input" min=0>
+                    <span><button class="button is-small is-link">&#10003;</button></span>
+                </div>
+            </td>
+            <td><button class="button is-danger is-small" value={{item.symbol}}>Remove</button></td>
+        </tr>
+    </ng-container>
+</table>
