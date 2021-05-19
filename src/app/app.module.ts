@@ -9,12 +9,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {UserServiceService}    from "./user-service.service";
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SearchAssetComponent } from './search-asset/search-asset.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
+import { NewsFeedComponent } from './news-feed/news-feed.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DashboardComponent,
+    SearchAssetComponent,
+    PortfolioComponent,
+    NewsFeedComponent
   ],
   imports: [
     BrowserModule,
