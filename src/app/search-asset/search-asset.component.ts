@@ -23,7 +23,7 @@ export class SearchAssetComponent implements OnInit {
   onGetStockClick() {
     this.searchAssetService.getStockInfo(this.searchStockInput).subscribe(result => this.assetResults = result);
   }
-
+  // useless comment
   onGetCryptoClick() {
     this.searchAssetService.getCryptoInfo(this.searchCCInput).subscribe(result => this.assetResults = result);
   }
