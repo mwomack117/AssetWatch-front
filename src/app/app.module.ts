@@ -13,6 +13,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SearchAssetComponent } from './search-asset/search-asset.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { NewsFeedComponent } from './news-feed/news-feed.component';
+import { AuthGuardServiceGuard } from './auth-guard-service.guard';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,7 @@ import { NewsFeedComponent } from './news-feed/news-feed.component';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [UserServiceService],
+  providers: [UserServiceService, AuthGuardServiceGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
