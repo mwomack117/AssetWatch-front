@@ -14,10 +14,10 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log("dashboard", this.userData["id"]);
-    this.apiInvestmentService.getAllAssets().subscribe(result => {
-      console.log("investments", result);
-    })
+    // console.log("dashboard", this.userData["id"]);
+    // this.apiInvestmentService.getAllAssets().subscribe(result => {
+    //   console.log("investments", result);
+    // })
   }
 
 }

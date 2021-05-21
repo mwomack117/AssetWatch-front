@@ -21,11 +21,13 @@
             <td>{{item.close | currency}}</td>
             <td>Shares</td>
             <td class="update-input-td">
-                <div class="is-flex"><input type=" number" class="input is-small is-primary update-input" min=0>
-                    <span><button class="button is-small is-link">&#10003;</button></span>
+                <div class="is-flex"><input type=" number" class="input is-small is-primary update-input" min=0
+                        value="{{item.quantity}}">
+                    <span><button class="button is-small is-link"
+                            (click)="onUpdateClick(item.assetId, item)">&#10003;</button></span>
                 </div>
             </td>
-            <td><button class="button is-danger is-small" value={{item.symbol}}>Remove</button></td>
+            <td><button class="button is-danger is-small" (click)="onDeleteClick(item.assetId)">Remove</button></td>
         </tr>
     </ng-container>
 </table>

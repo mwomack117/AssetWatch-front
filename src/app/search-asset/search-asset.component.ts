@@ -18,13 +18,18 @@ export class SearchAssetComponent implements OnInit {
   stockResults: Asset;
   cryptoResults: Asset;
 
+  dbSymbols: string[] = [];
+
   addAssetObj: AddAsset;
   loggedInUser = JSON.parse(localStorage.getItem("SessionUser"));
 
   constructor(private searchAssetService: SearchAssetService, private apiInvestmentService: ApiInvestmentService) { }
 
   ngOnInit(): void {
-    console.log(this.loggedInUser);
+    this.apiInvestmentService.getAllAssets().subscribe(dbResults => {
+      dbResults.forEach(item => this.dbSymbols.push(item["tickerSymbol"]))
+    })
+
   }
 
   onGetStockClick() {
@@ -40,6 +45,10 @@ export class SearchAssetComponent implements OnInit {
   }
 
   addStockClick() {
+    if (this.dbSymbols.indexOf(this.stockResults.symbol) !== -1) {
+      console.log("unable to add duplicate");
+      return;
+    }
     this.addAssetObj = {
       tickerSymbol: this.stockResults.symbol,
       quantity: this.sharesInput,
@@ -47,7 +56,23 @@ export class SearchAssetComponent implements OnInit {
         id: this.loggedInUser.id
       }
     };
-    console.log(this.addAssetObj);
+    this.apiInvestmentService.addAsset(this.addAssetObj).subscribe(result => {
+      console.log(result);
+    })
+  }
+
+  addCryptoClick() {
+    if (this.dbSymbols.indexOf(this.cryptoResults.symbol.toUpperCase()) !== -1) {
+      console.log("unable to add duplicate");
+      return;
+    }
+    this.addAssetObj = {
+      tickerSymbol: this.cryptoResults.symbol,
+      quantity: this.sharesInput,
+      user: {
+        id: this.loggedInUser.id
+      }
+    };
     this.apiInvestmentService.addAsset(this.addAssetObj).subscribe(result => {
       console.log(result);
     })
