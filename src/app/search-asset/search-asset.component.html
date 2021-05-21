@@ -13,7 +13,7 @@
     <div class="column">
         <div class="field has-addons">
             <div class="control">
-                <input class="input" type="text" [(ngModel)]="searchCCInput" placeholder="Crypto ticker">
+                <input class="input" type="text" [(ngModel)]="searchCryptoInput" placeholder="Crypto ticker">
             </div>
             <div class="control">
                 <button class="button is-primary" (click)="onGetCryptoClick()">Search</button>
@@ -33,16 +33,30 @@
             <th>Add</th>
         </tr>
     </thead>
-    <ng-container *ngIf="assetResults">
+    <ng-container *ngIf="stockResults">
         <tr>
-            <td>{{assetResults.symbol}}</td>
-            <td>{{assetResults.name }}</td>
-            <td>{{assetResults.open | currency}}</td>
-            <td>{{assetResults.close | currency}}</td>
-            <td><input type="number" class="input is-small is-primary" min=0 id="quantity" [(ngModel)]="sharesInput">
+            <td>{{stockResults.symbol}}</td>
+            <td>{{stockResults.name }}</td>
+            <td>{{stockResults.open | currency}}</td>
+            <td>{{stockResults.close | currency}}</td>
+            <td><input type="number" value=0 class="input is-small is-primary" min=0 id="quantity"
+                    [(ngModel)]="sharesInput">
             </td>
-            <td><button class="button is-primary is-small" value="{{assetResults.symbol}}"
-                    (click)="addAssetClick()">Add</button></td>
+            <td><button class="button is-primary is-small" value="{{stockResults.symbol}}"
+                    (click)="addStockClick()">Add</button></td>
+        </tr>
+    </ng-container>
+    <ng-container *ngIf="cryptoResults">
+        <tr>
+            <td>{{cryptoResults.symbol}}</td>
+            <td>{{cryptoResults.name }}</td>
+            <td>{{cryptoResults.open | currency}}</td>
+            <td>{{cryptoResults.close | currency}}</td>
+            <td><input type="number" alue=0 class="input is-small is-primary" min=0 id="quantity"
+                    [(ngModel)]="sharesInput">
+            </td>
+            <td><button class="button is-primary is-small" value="{{cryptoResults.symbol}}"
+                    (click)="addCryptoClick()">Add</button></td>
         </tr>
     </ng-container>
 </table>
