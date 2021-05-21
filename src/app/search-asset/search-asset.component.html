@@ -39,7 +39,7 @@
             <td>{{stockResults.name }}</td>
             <td>{{stockResults.open | currency}}</td>
             <td>{{stockResults.close | currency}}</td>
-            <td><input type="number" value=0 class="input is-small is-primary" min=0 id="quantity"
+            <td><input type="number" value="0" class="input is-small is-primary" min=0 id="quantity"
                     [(ngModel)]="sharesInput">
             </td>
             <td><button class="button is-primary is-small" value="{{stockResults.symbol}}"
@@ -52,7 +52,7 @@
             <td>{{cryptoResults.name }}</td>
             <td>{{cryptoResults.open | currency}}</td>
             <td>{{cryptoResults.close | currency}}</td>
-            <td><input type="number" alue=0 class="input is-small is-primary" min=0 id="quantity"
+            <td><input type="number" value="0" class="input is-small is-primary" min=0 id="quantity"
                     [(ngModel)]="sharesInput">
             </td>
             <td><button class="button is-primary is-small" value="{{cryptoResults.symbol}}"

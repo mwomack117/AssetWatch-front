@@ -14,6 +14,7 @@ import { SearchAssetComponent } from './search-asset/search-asset.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { NewsFeedComponent } from './news-feed/news-feed.component';
 import { AuthGuardServiceGuard } from './auth-guard-service.guard';
+import { ApiInvestmentService } from './api-investment.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { AuthGuardServiceGuard } from './auth-guard-service.guard';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [UserServiceService, AuthGuardServiceGuard],
+  providers: [UserServiceService, AuthGuardServiceGuard, ApiInvestmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
