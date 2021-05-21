@@ -8,7 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {UserServiceService}    from "./user-service.service";
+import { UserServiceService } from "./user-service.service";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SearchAssetComponent } from './search-asset/search-asset.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
@@ -32,7 +32,7 @@ import { AuthGuardServiceGuard } from './auth-guard-service.guard';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [UserServiceService, AuthGuardServiceGuard ],
+  providers: [UserServiceService, AuthGuardServiceGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
