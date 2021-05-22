@@ -19,13 +19,12 @@
             <td>{{item.exchange}}</td>
             <td>{{item.open | currency}}</td>
             <td>{{item.close | currency}}</td>
-            <td>Shares</td>
+            <td>{{item.quantity}}</td>
             <td class="update-input-td">
-                <div class="is-flex"><input type=" number" class="input is-small is-primary update-input" min=0
-                        value="{{item.quantity}}">
-                    <span><button class="button is-small is-link"
-                            (click)="onUpdateClick(item.assetId, item)">&#10003;</button></span>
-                </div>
+                <form class="is-flex"><input type=" number" class="input is-small is-primary update-input"
+                        id={{item.name}} min=0>
+                    <span><button class="button is-small is-link" (click)="onUpdateClick()">&#10003;</button></span>
+                </form>
             </td>
             <td><button class="button is-danger is-small" (click)="onDeleteClick(item.assetId)">Remove</button></td>
         </tr>

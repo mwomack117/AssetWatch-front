@@ -59,6 +59,8 @@ export class SearchAssetComponent implements OnInit {
     this.apiInvestmentService.addAsset(this.addAssetObj).subscribe(result => {
       console.log(result);
     })
+    window.location.reload();
+
   }
 
   addCryptoClick() {
@@ -76,6 +78,7 @@ export class SearchAssetComponent implements OnInit {
     this.apiInvestmentService.addAsset(this.addAssetObj).subscribe(result => {
       console.log(result);
     })
+    window.location.reload();
   }
 
 }

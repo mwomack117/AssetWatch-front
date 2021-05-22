@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AddAsset } from './models/add-asset';
 import { RemoveAsset } from './models/remove-asset';
+import { UpdateAsset } from './models/update-asset';
 
 
 @Injectable({
@@ -32,5 +33,9 @@ export class ApiInvestmentService {
 
   public deleteAsset(data: RemoveAsset): Observable<RemoveAsset> {
     return this.http.post<RemoveAsset>(this.url + "/investment/remove", data, this.httpOptions);
+  }
+
+  public updateAsset(data: UpdateAsset): Observable<UpdateAsset> {
+    return this.http.put<UpdateAsset>(this.url + "/investment/update", data, this.httpOptions);
   }
 }
