@@ -10,6 +10,7 @@ export class LoginComponent implements OnInit {
 
   username: string;
   password: string;
+  cantLogin:string;
    user:any;
 
   constructor(private userservice: UserServiceService, private router:Router ){ 
@@ -20,10 +21,10 @@ export class LoginComponent implements OnInit {
     this.username="";
     this.password="";
     this.user=null;
+    this.cantLogin= "";
     localStorage.removeItem("SessionUser");
 
   }
-
 
 
 
@@ -31,8 +32,14 @@ export class LoginComponent implements OnInit {
 
     console.log("username is " + this.username);
     console.log("password is " + this.password );
-    
-    this.user=this.userservice.LogginUser(this.username, this.password);
+  this.user=this.userservice.LogginUser(this.username, this.password);
+  if(this.user!=null)
+  {
+    //weird logic a to prompt for error but if there a return an error happen
+     this.cantLogin= "Can't Login User";
+  }
+
+  
     
 }
 

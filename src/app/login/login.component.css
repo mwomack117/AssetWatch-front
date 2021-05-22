@@ -46,3 +46,8 @@
     align-items: center;
   }
   
+  #errorcantlogin{
+    margin-top: 4px;
+    color: #ffffff;
+
+  }
