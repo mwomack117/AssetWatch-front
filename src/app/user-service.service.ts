@@ -23,8 +23,10 @@ const httpOptions = {
 export class UserServiceService {
  currentuser:object;
   url: string;
+  userexist: boolean;
   constructor(private httpClient: HttpClient , private router : Router) { 
     this.url="http://localhost:8080/AssetWatch";
+    this.userexist=true;
   }
 
 
@@ -48,17 +50,16 @@ export class UserServiceService {
         this.currentuser= res;
         console.log("status"  + res);
       
-        //with user login we can some function that check if user log in multiple 
-        //component if the user ==undefine or null then bring user back to login page
         localStorage.setItem('SessionUser',JSON.stringify(res)) ;
-        //this.GetUser(username, password);
-
+        this.userexist=true;
         this.router.navigate(['/dashboard']);
-        //return this.currentuser;
+        
       },
       (error)=>{
-        console.log(error);
-        console.log(error.status);
+        //console.log(error);
+         return  { info: "Cant find user"};
+         //this.userexist=false;
+        
       }
     );
 
