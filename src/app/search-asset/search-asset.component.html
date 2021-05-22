@@ -3,10 +3,10 @@
     <div class="column">
         <div class="field has-addons mb-4">
             <div class="control">
-                <input class="input" type="text" [(ngModel)]="searchStockInput" placeholder="Stock ticker">
+                <input class="input" id="searchstock" type="text" [(ngModel)]="searchStockInput" placeholder="Stock ticker">
             </div>
             <div class="control">
-                <button class="button is-primary " (click)="onGetStockClick()">Search</button>
+                <button class="button is-primary "  id="searchstockbutton" (click)="onGetStockClick()">Search</button>
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@
     </thead>
     <ng-container *ngIf="stockResults">
         <tr>
-            <td>{{stockResults.symbol}}</td>
+            <td id="symbol">{{stockResults.symbol}}</td>
             <td>{{stockResults.name }}</td>
             <td>{{stockResults.open | currency}}</td>
             <td>{{stockResults.close | currency}}</td>
@@ -48,7 +48,7 @@
     </ng-container>
     <ng-container *ngIf="cryptoResults">
         <tr>
-            <td>{{cryptoResults.symbol}}</td>
+            <td >{{cryptoResults.symbol}}</td>
             <td>{{cryptoResults.name }}</td>
             <td>{{cryptoResults.open | currency}}</td>
             <td>{{cryptoResults.close | currency}}</td>
