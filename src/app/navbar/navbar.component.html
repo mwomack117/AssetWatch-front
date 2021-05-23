@@ -15,7 +15,7 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
 
-        <div class="navbar-end">
+        <div class="navbar-end" *ngIf="isLoggedOut">
             <div class="navbar-item">
                 <div class="buttons">
                     <a class="button is-primary" routerLink="/register">
@@ -25,6 +25,13 @@
                         Log in
                     </a>
                 </div>
+            </div>
+        </div>
+        <div class="navbar-end" *ngIf="isLoggedIn">
+            <div class="navbar-item">
+                <a class="button is-link is-light" routerLink="/" (click)="onSignOutClick()">
+                    <strong>Sign Out</strong>
+                </a>
             </div>
         </div>
     </div>

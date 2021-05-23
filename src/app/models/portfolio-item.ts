@@ -3,5 +3,6 @@ export interface PortfolioItem {
     name: string,
     exchange: string,
     open: number,
-    close: number
+    close: number,
+    quantity?: number,
 }
