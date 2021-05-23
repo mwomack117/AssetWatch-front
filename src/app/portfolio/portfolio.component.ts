@@ -50,6 +50,7 @@ export class PortfolioComponent implements OnInit {
               this.portfolioItems[q]["assetId"] = this.assetId[q];
             }
           }
+          this.getTotalAssetValue();
         })
       } else {
         this.portfolioService.getPortfolio(this.dbSymbols.join()).subscribe(result => {
