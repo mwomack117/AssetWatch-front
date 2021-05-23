@@ -32,13 +32,9 @@ export class PortfolioComponent implements OnInit {
   ngOnInit() {
 
     this.apiInvestmentService.getAllAssets().subscribe(dbResults => {
-      console.log("dbResults", dbResults)
       dbResults.forEach(item => this.dbSymbols.push(item["tickerSymbol"]))
       dbResults.forEach(item => this.assetQuantity.push(item["quantity"]))
       dbResults.forEach(item => this.assetId.push(item["id"]))
-      console.log("dbSymbols w/ join()", this.dbSymbols.join());
-      console.log(this.assetQuantity);
-      console.log(this.assetId);
 
       if (dbResults.length == 0) {
         return;
@@ -78,13 +74,39 @@ export class PortfolioComponent implements OnInit {
     window.location.reload();
   }
 
+  //Note: to get the first and following rows you only need getFirstTableRow().nextSibling
+  getTableHead(){
+    return document.getElementById("portfolioTable").firstChild
+  }
+
   onUpdateClick() {
-    this.assetToUpdate = {
-      id: 9,
-      quantity: 10
+    console.log(this)
+    console.log(this.getTableHead())
+    let head = this.getTableHead()
+
+    //loop through the table
+    for(let i=0; i<this.assetId.length; i++){
+      //move to the next row
+      head = head.nextSibling
+      let currentSharesCell = <HTMLTableCellElement>head.firstChild.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling
+      let currentShares = <number><unknown>currentSharesCell.innerHTML
+
+      let updateInputBox = <HTMLInputElement>head.firstChild.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.firstChild.firstChild
+      let inputtedQuantity = <number><unknown>(updateInputBox as HTMLInputElement).value
+
+      console.log(currentShares)
+      
+      if(currentShares!=inputtedQuantity && inputtedQuantity!=0){
+        this.assetToUpdate = {
+          id: this.assetId[i],
+          quantity: inputtedQuantity
+        }
+      }
     }
+
     this.apiInvestmentService.updateAsset(this.assetToUpdate).subscribe();
+    window.location.reload();
+
   }
 
 }
-
