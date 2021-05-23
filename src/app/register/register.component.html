@@ -2,27 +2,29 @@
 <div class="columns container is-fluid  is-centered">
 
     <div class="column   is-12-mobile is-4-desktop  is-4-tablet">
-       <div class="signupcontainer has-background-primary"> 
+       <form class="signupcontainer has-background-primary" name="myForm" > 
          <label> Firstname </label>
-         <input type="text" class="input"   [(ngModel)]="Firstname"      required/>
+         <input type="text" class="input"   [(ngModel)]="Firstname" name = "firstname" minlength="3" maxlength="30" required/>
 
          <label> Lastname </label>
-         <input type="text" class="input"  [(ngModel)]="Lastname" required/>
+         <input type="text" class="input"  [(ngModel)]="Lastname"  name ="lastname" minlength="3" maxlength="30"  required/>
 
          <label> Email </label>
-         <input type="email" class="input" [(ngModel)]="Email" required />
+         <input type="email" class="input" [(ngModel)]="Email" required  minlength="3" maxlength="50"  name="email" />
 
          <label>User Name </label>
-         <input type="text" class="input" [(ngModel)]="Username" required />
+         <input type="text" class="input" [(ngModel)]="Username" name="username" minlength="3" maxlength="30" required />
 
          <label>Password </label>
-         <input type="password" class="input"  [(ngModel)]= "Password" required />
+         <input type="password" class="input"  [(ngModel)]= "Password"  name ="password" minlength="3" maxlength="30" required />
 
-         <button type="submit" id="signingup" class=" button is-rounded has-background-primary-dark" (click)="SignupUser()"> Sign up </button>
+         <button type="submit" (click)="SignupUser()" id="signingup" class=" button is-rounded has-background-primary-dark"> Sign up </button>
+           
+        
+         <span ng-show="myForm.firstname.$touched && myForm.firstname.$invalid"> hello </span>
+        
 
-
-
-    </div>
+       </form>
     </div>
 </div>
 
