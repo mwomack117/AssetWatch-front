@@ -25,7 +25,6 @@ export class UserServiceService {
   url: string;
   userexist: boolean;
   constructor(private httpClient: HttpClient, private router: Router) {
-    this.url = "http://localhost:8080/AssetWatch";
     this.userexist = true;
   }
 
@@ -35,7 +34,7 @@ export class UserServiceService {
 
   CreateUser(user: UserModel) {
 
-    return this.httpClient.post('http://localhost:8080/AssetWatch/user/register', user,).subscribe(
+    return this.httpClient.post('http://ec2-54-167-32-149.compute-1.amazonaws.com:8080/AssetWatch/user/register', user,).subscribe(
       (res) => {
         console.log(res)
       }
@@ -45,7 +44,7 @@ export class UserServiceService {
   LogginUser(username: string, password: string) {
 
     let logindto = { "username": username, "password": password }
-    return this.httpClient.post('http://localhost:8080/AssetWatch//user/login', logindto, httpOptions).subscribe(
+    return this.httpClient.post('http://ec2-54-167-32-149.compute-1.amazonaws.com:8080/AssetWatch/user/login', logindto, httpOptions).subscribe(
       (res) => {
         console.log(res)
         this.currentuser = res;
@@ -58,7 +57,9 @@ export class UserServiceService {
       },
       (error) => {
         //console.log(error);
+        this.userexist=false;
         return { info: "Cant find user" };
+     
         //this.userexist=false;
 
       }
