@@ -3,6 +3,7 @@ import { ApiInvestmentService } from '../api-investment.service';
 import { AddAsset } from '../models/add-asset';
 import { Asset } from "../models/asset";
 import { SearchAssetService } from '../search-asset.service';
+import { Router } from '@angular/router'
 
 
 @Component({
@@ -23,7 +24,7 @@ export class SearchAssetComponent implements OnInit {
   addAssetObj: AddAsset;
   loggedInUser = JSON.parse(localStorage.getItem("SessionUser"));
 
-  constructor(private searchAssetService: SearchAssetService, private apiInvestmentService: ApiInvestmentService) { }
+  constructor(private searchAssetService: SearchAssetService, private apiInvestmentService: ApiInvestmentService, private router: Router) { }
 
   ngOnInit(): void {
     this.apiInvestmentService.getAllAssets().subscribe(dbResults => {
@@ -59,6 +60,7 @@ export class SearchAssetComponent implements OnInit {
     this.apiInvestmentService.addAsset(this.addAssetObj).subscribe(result => {
       console.log(result);
     })
+    this.ngOnInit()
     window.location.reload();
 
   }

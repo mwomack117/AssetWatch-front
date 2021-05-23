@@ -29,6 +29,8 @@ export class PortfolioComponent implements OnInit {
   assetToUpdate: UpdateAsset;
   updateValue: number;
 
+  totalAssetValue: number = 0;
+
   ngOnInit() {
 
     this.apiInvestmentService.getAllAssets().subscribe(dbResults => {
@@ -61,6 +63,8 @@ export class PortfolioComponent implements OnInit {
             }
           }
           console.log("portfolioItems", this.portfolioItems);
+          this.getTotalAssetValue();
+          console.log(this.totalAssetValue);
         });
       }
     });
@@ -75,7 +79,7 @@ export class PortfolioComponent implements OnInit {
   }
 
   //Note: to get the first and following rows you only need getFirstTableRow().nextSibling
-  getTableHead(){
+  getTableHead() {
     return document.getElementById("portfolioTable").firstChild
   }
 
@@ -85,18 +89,18 @@ export class PortfolioComponent implements OnInit {
     let head = this.getTableHead()
 
     //loop through the table
-    for(let i=0; i<this.assetId.length; i++){
+    for (let i = 0; i < this.assetId.length; i++) {
       //move to the next row
       head = head.nextSibling
-      let currentSharesCell = <HTMLTableCellElement>head.firstChild.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling
+      let currentSharesCell = <HTMLTableCellElement>head.firstChild.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling
       let currentShares = <number><unknown>currentSharesCell.innerHTML
 
-      let updateInputBox = <HTMLInputElement>head.firstChild.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.firstChild.firstChild
+      let updateInputBox = <HTMLInputElement>head.firstChild.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.firstChild.firstChild
       let inputtedQuantity = <number><unknown>(updateInputBox as HTMLInputElement).value
 
       console.log(currentShares)
-      
-      if(currentShares!=inputtedQuantity && inputtedQuantity!=0){
+
+      if (currentShares != inputtedQuantity && inputtedQuantity != 0) {
         this.assetToUpdate = {
           id: this.assetId[i],
           quantity: inputtedQuantity
@@ -107,6 +111,15 @@ export class PortfolioComponent implements OnInit {
     this.apiInvestmentService.updateAsset(this.assetToUpdate).subscribe();
     window.location.reload();
 
+  }
+
+  getTotalAssetValue() {
+    this.portfolioItems.forEach(item => {
+      if (item.quantity > 0) {
+        console.log(item.close * item.quantity);
+        this.totalAssetValue += (item.quantity * item.close)
+      }
+    })
   }
 
 }
