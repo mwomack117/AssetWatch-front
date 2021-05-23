@@ -11,7 +11,7 @@ import { UpdateAsset } from './models/update-asset';
 })
 export class ApiInvestmentService {
 
-  url: string = "http://localhost:8080/AssetWatch";
+  url: string = "http://ec2-54-167-32-149.compute-1.amazonaws.com:8080/AssetWatch";
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
