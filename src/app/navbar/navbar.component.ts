@@ -7,38 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  /*isLoggedIn: boolean = localStorage.getItem("SessionUser") !== null ? true : false;
-  isLoggedOut: boolean = localStorage.getItem("SessionUser") == null ? true : false;*/
-  isLoggedIn:boolean;
-  isLoggedOut:boolean;
+  isLoggedIn: boolean = localStorage.getItem("SessionUser") !== null ? true : false;
+  isLoggedOut: boolean = localStorage.getItem("SessionUser") == null ? true : false;
+
   ngOnInit(): void {
-    console.log(localStorage.getItem("SessionUser"));
-    //this.isLoggedIn= false; 
-    //his.isLoggedOut=true;
-
-    if(localStorage.getItem("SessionUser") !== null)
-   {
-          this.isLoggedIn=true;
-          //this.isLoggedOut=false;
-   }
-   if(localStorage.getItem("SessionUser") == null)
-   {
-          this.isLoggedOut=true;
-          //this.isLoggedIn=false;
-   }
-
-  }
-  ngOnchanges(){
-   if(localStorage.getItem("SessionUser") !== null)
-   {
-          this.isLoggedIn=true;
-          this.isLoggedOut=false;
-   }
-   if(localStorage.getItem("SessionUser") == null)
-   {
-          this.isLoggedOut=true;
-          this.isLoggedIn=false;
-   }
 
   }
 
