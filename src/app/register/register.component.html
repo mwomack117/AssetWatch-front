@@ -21,7 +21,7 @@
          <button type="submit" (click)="SignupUser()" id="signingup" class=" button is-rounded has-background-primary-dark"> Sign up </button>
            
         
-         <span ng-show="myForm.firstname.$touched && myForm.firstname.$invalid"> hello </span>
+         <span id="errormessagesignup">{{invalidmessage}} </span>
         
 
        </form>
